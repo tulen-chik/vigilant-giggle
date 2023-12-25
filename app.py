@@ -1,4 +1,4 @@
-from flask import Flask, render_template, url_for, request, redirect, abort
+from flask import Flask, render_template, url_for, request, redirect, Request
 from Nord.database import db, Users, Catalog, ItemsBought
 
 app = Flask(__name__)
@@ -29,9 +29,7 @@ def catalog(id):
             id = request.form['search']
             return redirect(url_for('catalog', id=id))
     
-    data = Catalog.query.filter(Catalog.name == id).first()
-    if not data:
-        abort(404)
+    data = Catalog.query.filter(Catalog.name == id).first_or_404()
 
     return render_template('catalog.html', data=data, title='страница каталога')
 
@@ -43,6 +41,17 @@ def login():
             id = request.form['search']
             return redirect(url_for('catalog', id=id))
     return render_template('login.html', title='войти')
+
+
+@app.route('/register', methods=['GET', 'POST'])
+def register():
+    if request.method == 'POST':
+        if request.form['search']:
+            id = request.form['search']
+            return redirect(url_for('catalog', id=id))
+        #if request.form['email']:
+
+    return render_template('register.html', title='войти')
 
 
 @app.errorhandler(404)

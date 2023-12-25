@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="japp" style="margin-left: 40vh; margin-right: 40vh; margin-top: 10vh;">
+<form>
+    <!-- Email input -->
+    <div class="form-outline mb-4">
+      <input type="email" id="form2Example1" class="form-control" />
+      <label class="form-label" for="form2Example1">адрес электронной почты</label>
+    </div>
+  
+    <!-- Password input -->
+    <div class="form-outline mb-4">
+      <input type="password" id="form2Example2" class="form-control" />
+      <label class="form-label" for="form2Example2">пароль</label>
+    </div>
+
+
+    <!-- Reapeate Password input -->
+    <div class="form-outline mb-4">
+        <input type="password" id="form2Example2" class="form-control" />
+        <label class="form-label" for="form2Example2">повторить пароль</label>
+    </div>
+  
+    <!-- Submit button -->
+    <button type="button" class="btn btn-primary btn-block mb-4">зарегистрироваться</button>
+  
+    <!-- Register buttons -->
+    <div class="text-center">
+      <p>есть аккаунта? <a href="{{url_for('login')}}">войти</a></p>
+    </div>
+  </form>
+</div>
+{% endblock %}
